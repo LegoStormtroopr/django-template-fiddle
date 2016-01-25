@@ -6,7 +6,7 @@
             
             <p>
                 <label for="id_title">Title:</label>
-                <input id="id_title" maxlength="200" name="title" type="text">
+                <input id="id_title" maxlength="200" name="title" type="text" value='{% if form.title.value %}{{form.title.value}}{% endif %}'>
                 <span class="pull-right">
                     {% if fiddle %}
                     <button class="btn btn-primary" name='action' type="submit" value='save'><i class='fa fa-code-fork'></i> Fork</button>
@@ -35,11 +35,10 @@
             <style>
                 {{ styles }}
             </style>
-            {% if title %}
-                <h2>{{ title }}</h2>
-            {% endif %}
             <div class="fiddler">
-                {% if template_error %}
+                {% if title %}
+                    <h2>{{ title }}</h2>
+                {% endif %}                {% if template_error %}
                     <div class='alert alert-warning'>
                         {{ err_msg }}. The exact error is below:
                         <hr>

@@ -25,13 +25,14 @@ SECRET_KEY = 'zbvl8bw8%j4)9vw(f%3&)ry13z0%caqw90=z^zm92zm7+#2&cu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://djangotemplatefiddle.pythonanywhere.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'django_template_fiddle',
+    'captcha',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -20,6 +20,7 @@ def make_fiddle(request):
             fiddle_context = form.cleaned_data.get('context')
             fiddle_template = form.cleaned_data.get('template').replace('"','\"')
             fiddle_styles = form.cleaned_data.get('styles')
+            title = form.cleaned_data.get('title')
             try:
                 if fiddle_context and fiddle_template:
                     rendered_template = fiddle_render(fiddle_context,
@@ -27,7 +28,8 @@ def make_fiddle(request):
                     context.update({
                         'form': form,
                         'rendered_template': rendered_template,
-                        'styles': fiddle_styles
+                        'styles': fiddle_styles,
+                        'title': title,
                     })
 
                     if action == 'save':
@@ -65,7 +67,8 @@ def load_fiddle(request,fiddle_stub):
         'form': form,
         'rendered_template': rendered_template,
         'styles': fiddle.styles,
-        'fiddle': fiddle
+        'fiddle': fiddle,
+        'title': fiddle.title,
     }
     return render(request, "fiddler/on_the_roof.html", context)
 

@@ -44,8 +44,25 @@
   fields:
     created: '1999-01-01'
     context: |
-        {
-        }
+        { 'magic_word' : "Please"}
     template: |
-        <a href='https://www.youtube.com/watch?v=RfiQYRn7fBg'>Uh-uh-uh, you didn't say the magic word...</a>
+        <a href='https://www.youtube.com/watch?v=RfiQYRn7fBg'>{{ magic_word }} goddamn it!</a>
         <img src='http://cdn.slashgear.com/wp-content/uploads/2014/07/Screen-Shot-2014-07-14-at-1.38.56-PM-820x420.png'>
+    styles: |
+        img {
+            width:100%;
+        }
+    title: Uh-uh-uh, you didn't say the magic word...
+- model: django_template_fiddle.Fiddle
+  pk: 58360
+  fields:
+    created: '1999-01-01'
+    context: |
+        { }
+    template: |
+        <img src='http://ih0.redbubble.net/image.11698366.9098/fc,550x550,royal_blue.jpg'>
+    styles: |
+        img {
+            width:100%;
+        }
+    title: Winners don't eat meat.
