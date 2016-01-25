@@ -2,24 +2,31 @@
 {% block content %}
     <div class="row">
         <div class="col-sm-6">
-            <form action="." method="post">{% csrf_token %}
+            <form action="{% url 'make_fiddle' %}" method="post">{% csrf_token %}
             
             <p>
                 <label for="id_title">Title:</label>
                 <input id="id_title" maxlength="200" name="title" type="text">
-                <button class="btn btn-primary pull-right" type="submit">Fiddle de de</button>
+                <span class="pull-right">
+                    {% if fiddle %}
+                    <button class="btn btn-primary" name='action' type="submit" value='save'>Fork</button>
+                    {% else %}
+                    <button class="btn btn-primary" name='action' type="submit" value='save'>Save</button>
+                    {% endif %}
+                    <button class="btn btn-primary" name='action' type="submit" value='show'>Fiddle de de</button>
+                </span>
             </p>
             <p>
                 <label for="id_context">Context:</label>
-                <textarea data-editor="python" cols="40" id="id_context" name="context" rows="10">{{form.context.value}}</textarea>
+                <textarea data-editor="python" cols="40" id="id_context" name="context" rows="10">{% if form.context.value %}{{form.context.value}}{% endif %}</textarea>
             </p>
             <p>
                 <label for="id_template">Template:</label>
-                <textarea data-editor="html"  cols="40" id="id_template" name="template" rows="10">{{form.template.value}}</textarea>
+                <textarea data-editor="html"  cols="40" id="id_template" name="template" rows="10">{% if form.context.value %}{{form.template.value}}{% endif %}</textarea>
             </p>
             <p>
                 <label for="id_styles">Styles:</label>
-                <textarea data-editor="css"  cols="40" id="id_styles" name="styles" rows="10">{{form.styles.value}}</textarea
+                <textarea data-editor="css"  cols="40" id="id_styles" name="styles" rows="10">{% if form.context.value %}{{form.styles.value}}{% endif %}</textarea>
             </p>
             </form>
             
@@ -28,8 +35,19 @@
             <style>
                 {{ styles }}
             </style>
+            {% if title %}
+                <h2>{{ title }}</h2>
+            {% endif %}
             <div class="fiddler">
-                {{rendered_template}}
+                {% if template_error %}
+                    <div class='alert alert-warning'>
+                        {{ err_msg }}. The exact error is below:
+                        <hr>
+                        {{ template_error }}
+                    </div>
+                {% else %}
+                    {{rendered_template}}
+                {% endif %}
             </div>
         </div>
     </div>

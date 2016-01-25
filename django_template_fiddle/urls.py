@@ -19,5 +19,6 @@ from django.contrib import admin
 
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
+    url(r'^fiddle/(.+)/$', 'django_template_fiddle.views.load_fiddle', name='load_fiddle'),
     url(r'^fiddle/$', 'django_template_fiddle.views.make_fiddle', name='make_fiddle'),
 ]
