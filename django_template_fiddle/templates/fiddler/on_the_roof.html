@@ -1,0 +1,68 @@
+{% extends "fiddler/base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="." method="post">{% csrf_token %}
+            
+            <p>
+                <label for="id_title">Title:</label>
+                <input id="id_title" maxlength="200" name="title" type="text">
+                <button class="btn btn-primary pull-right" type="submit">Fiddle de de</button>
+            </p>
+            <p>
+                <label for="id_context">Context:</label>
+                <textarea data-editor="python" cols="40" id="id_context" name="context" rows="10">{{form.context.value}}</textarea>
+            </p>
+            <p>
+                <label for="id_template">Template:</label>
+                <textarea data-editor="html"  cols="40" id="id_template" name="template" rows="10">{{form.template.value}}</textarea>
+            </p>
+            <p>
+                <label for="id_styles">Styles:</label>
+                <textarea data-editor="css"  cols="40" id="id_styles" name="styles" rows="10">{{form.styles.value}}</textarea
+            </p>
+            </form>
+            
+        </div>
+        <div class="col-sm-6">
+            <style>
+                {{ styles }}
+            </style>
+            <div class="fiddler">
+                {{rendered_template}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+    {# thanks! https://gist.github.com/duncansmart/5267653 #}
+    <script>
+        // Hook up ACE editor to all textareas with data-editor attribute
+        $(function () {
+            $('textarea[data-editor]').each(function () {
+                var textarea = $(this);
+                var mode = textarea.data('editor');
+                var editDiv = $('<div>', {
+                    position: 'absolute',
+                    //width: textarea.width(),
+                    height: textarea.height(),
+                    'class': textarea.attr('class')
+                }).insertBefore(textarea);
+                textarea.css('visibility', 'hidden');
+                textarea.css('height', '0px');
+                var editor = ace.edit(editDiv[0]);
+                editor.setTheme("ace/theme/monokai");
+                editor.getSession().setValue(textarea.val());
+                editor.getSession().setMode("ace/mode/" + mode);
+                
+                // copy back to textarea on form submit...
+                textarea.closest('form').submit(function () {
+                    textarea.val(editor.getSession().getValue());
+                })
+            });
+        });
+    </script>
+{% endblock %}
