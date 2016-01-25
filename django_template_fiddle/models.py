@@ -5,5 +5,4 @@ class Fiddle(models.Model):
     context = models.TextField(null=True, blank=True)
     template = models.TextField(null=True, blank=True)
     styles = models.TextField(null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, editable=False)

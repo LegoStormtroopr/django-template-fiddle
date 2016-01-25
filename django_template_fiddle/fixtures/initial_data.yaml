@@ -1,0 +1,51 @@
+- model: django_template_fiddle.Fiddle
+  pk: 4145210
+  fields:
+    created: '1999-01-01'
+    context: |
+        {
+            'greeting':'Hello',
+            'subject':'World'
+        }
+    template: |
+        {{ greeting }}, {{ subject }}
+        <hr>
+        This is a simple fiddler for Django Templates.
+        <p>Anything you can do in a template, you can do here.</p>
+- model: django_template_fiddle.Fiddle
+  pk: 4106719
+  fields:
+    created: '1999-01-01'
+    context: |
+        {
+        'steps':[
+            ("Enter a template on the left",''),
+            ("Also enter a context dict on the left as well",''),
+            ('Add some CSS styles',''),
+            ('Hit \'Fiddle de de\' to render the template',None'),
+            ('Or hit save/fork to make a new fiddle',None),
+        ]
+        }
+    template: |
+        Its, easy, just follow these steps -
+        <ul>
+        {% for step,link in steps %}
+            {% if link %}
+                <a href='{{link}}'>{{step}}</a>
+            {% else %}
+                {{ step }}
+            {% endif %}
+        
+        {% endfor %}
+        </ul>
+        In fact, you can see all this demonstrated on the left right now!
+- model: django_template_fiddle.Fiddle
+  pk: 150947331
+  fields:
+    created: '1999-01-01'
+    context: |
+        {
+        }
+    template: |
+        <a href='https://www.youtube.com/watch?v=RfiQYRn7fBg'>Uh-uh-uh, you didn't say the magic word...</a>
+        <img src='http://cdn.slashgear.com/wp-content/uploads/2014/07/Screen-Shot-2014-07-14-at-1.38.56-PM-820x420.png'>

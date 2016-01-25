@@ -1,5 +1,5 @@
 #Thanks to this answer: http://stackoverflow.com/a/1119769/764357
-ALPHABET = "23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
+ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def base62_encode(num, alphabet=ALPHABET):
     """Encode a number in Base X

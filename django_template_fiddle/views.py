@@ -73,3 +73,6 @@ def fiddle_render(fiddle_context, fiddle_template):
     fiddle_context = Context(ast.literal_eval(fiddle_context))
     fiddle_template = Template(fiddle_template)
     return fiddle_template.render(fiddle_context)
+
+def home(request):
+    return load_fiddle(request,'home')

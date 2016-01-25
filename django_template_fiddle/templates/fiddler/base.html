@@ -12,8 +12,15 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
         <style type="text/css" media="screen">
-            textarea {
-                /* height:0px; */
+            footer a:after, footer a:before {
+                content:' | ';
+                margin:2px;
+                color:black;
+            }
+            footer {
+                margin-top:5px;
+                border:1px solid #bb8;
+                font-size:110%;
             }
             .fiddler  {
                 border:1px solid black;
@@ -25,7 +32,7 @@
     </head>
     <body>
         <div class="container">
-        <h1>Django Template Fiddle</h1>
+        <h1><a href='/'>Django Template Fiddle</a></h1>
         <p>
             What it says on the box, enter a context dictionary and a template 
             below, click <kbd>Fiddle de de</kbd> and then out comes a rendered template
@@ -37,5 +44,10 @@
 
     {% block footer_scripts %}
     {% endblock %}
+    <footer class='text-center'>
+        <a href='https://github.com/LegoStormtroopr/'><i class='fa fa-github'></i> Built by LegoStormtroopr (in a day)</a>
+        <a href='https://github.com/LegoStormtroopr/django-template-fiddle/tree/master'><i class='fa fa-code-fork'></i> Fork on GitHub</a>
+        <a href='https://twitter.com/LegoStormtroopr/'><i class='fa fa-twitter'></i> Also on Twitter</a>
+    </footer>
     </body>
 </html>
