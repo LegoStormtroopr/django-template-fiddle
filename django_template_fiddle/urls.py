@@ -23,9 +23,9 @@ urlpatterns = [
     url(r'^fiddle/$', 'django_template_fiddle.views.make_fiddle', name='make_fiddle'),
 ]
 
-urlpatterns += patterns('',
-    url(r'^captcha/', include('captcha.urls')),
-)
+#urlpatterns += patterns('',
+#    url(r'^captcha/', include('captcha.urls')),
+#)
 
 urlpatterns += [
     # Catch everything else for fiddles and funny pages
