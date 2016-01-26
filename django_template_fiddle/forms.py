@@ -1,6 +1,6 @@
 from django import forms
 from models import Fiddle
-from captcha.fields import CaptchaField
+#from captcha.fields import CaptchaField
 
 class FiddleForm(forms.ModelForm):
     class Meta:
