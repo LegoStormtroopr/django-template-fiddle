@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="">
+        <title>Django Template Fiddler</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+        <style type="text/css" media="screen">
+            footer a:after, footer a:before {
+                content:' | ';
+                margin:2px;
+                color:black;
+            }
+            footer {
+                margin-top:5px;
+                border:1px solid #bb8;
+                font-size:110%;
+            }
+            .fiddler  {
+                border:1px solid black;
+                padding:12px;
+                height:100%;
+            }
+            .fiddler h2 {
+                font-size: 120%;
+                border-bottom:1px solid charcoal;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+        <h1><a href='/'>Django Template Fiddle</a></h1>
+        <p>
+            What it says on the box, enter a context dictionary and a template 
+            below, click <kbd>Fiddle de de</kbd> and then out comes a rendered template
+            on the right!<br>
+            To save a fiddle {# complete the capture and#} click <kbd>Save</kbd> or
+            <kbd>Fork</kbd>. If it breaks,
+            <a href='https://github.com/LegoStormtroopr/django-template-fiddle/issues'><i class='fa fa-bug'></i> lodge a bug</a> on Github.
+
+        </p>
+        {% block content %}
+        {% endblock %}
+        </div>
+
+    {% block footer_scripts %}
+    {% endblock %}
+    <footer class='text-center'>
+        <p>
+        <a href='https://github.com/LegoStormtroopr/'><i class='fa fa-github'></i> Built by LegoStormtroopr (in a day)</a>
+        <a href='https://twitter.com/LegoStormtroopr/'><i class='fa fa-twitter'></i> Also on Twitter</a>
+        <a href='https://pythonanywhere.com/'><i class='fa fa-cloud'></i> Developed using Cloud9</a>
+        <a href='https://pythonanywhere.com/'><i class='fa fa-server'></i> Hosted on PythonAnywhere</a>
+        </p>
+        <p>
+            <em>Small print:</em> Best effort to keep this up will be made,
+            subject to interest, inclement weather and shiny things in my
+            proximity.<br>
+            All content saved on this site is CC0 and you, me and everyone
+            else relinquished copyright.
+        </p>
+    </footer>
+    </body>
+</html>
