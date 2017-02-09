@@ -1,15 +1,15 @@
 import ast
+from . import utils
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import Context, Template
-from forms import FiddleForm
-from models import Fiddle
-import utils
+from django_template_fiddle.forms import FiddleForm
+from django_template_fiddle.models import Fiddle
 
 def make_fiddle(request):
 
     context = {}
-    
+
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = FiddleForm(request.POST)

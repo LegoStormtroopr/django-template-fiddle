@@ -71,6 +71,8 @@ TEMPLATES = [
     },
 ]
 
+ALLOWED_HOSTS = ['localhost']
+
 WSGI_APPLICATION = 'django_template_fiddle.wsgi.application'
 
 

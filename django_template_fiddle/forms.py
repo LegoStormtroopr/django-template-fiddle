@@ -1,5 +1,5 @@
 from django import forms
-from models import Fiddle
+from django_template_fiddle.models import Fiddle
 #from captcha.fields import CaptchaField
 
 class FiddleForm(forms.ModelForm):

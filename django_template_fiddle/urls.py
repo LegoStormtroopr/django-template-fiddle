@@ -14,13 +14,14 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.conf.urls import include, url
+from django_template_fiddle import views
 
 urlpatterns = [
     #url(r'^admin/', admin.site.urls),
-    url(r'^fiddle/(.+)/$', 'django_template_fiddle.views.load_fiddle', name='load_fiddle'),
-    url(r'^fiddle/$', 'django_template_fiddle.views.make_fiddle', name='make_fiddle'),
+    url(r'^fiddle/(.+)/$', views.load_fiddle, name="load_fiddle"),
+    url(r'^fiddle/$', views.make_fiddle, name="make_fiddle"),
 ]
 
 #urlpatterns += patterns('',
@@ -29,6 +30,6 @@ urlpatterns = [
 
 urlpatterns += [
     # Catch everything else for fiddles and funny pages
-    url(r'^(.+?)/$', 'django_template_fiddle.views.load_fiddle'),
-    url(r'^$', 'django_template_fiddle.views.home', name='home'),
+    url(r'^(.+?)/$', views.load_fiddle),
+    url(r'^$', views.home, name="home"),
 ]
