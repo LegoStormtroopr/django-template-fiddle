@@ -59,8 +59,7 @@ def make_fiddle(request):
 
 def load_fiddle(request,fiddle_stub):
     fiddle_stub = utils.base62_decode(fiddle_stub)
-
-    fiddle = get_object_or_404(Fiddle, pk=fiddle_stub)
+    fiddle = get_object_or_404(Fiddle,pk=fiddle_stub)
 
     form = FiddleForm(instance=fiddle)
 
@@ -72,7 +71,6 @@ def load_fiddle(request,fiddle_stub):
         'fiddle': fiddle,
         'title': fiddle.title,
     }
-
     return render(request, "fiddler/on_the_roof.html", context)
 
 def fiddle_render(fiddle_context, fiddle_template):
