@@ -1,10 +1,10 @@
 import ast
+from . import utils
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import Context, Template
-from forms import FiddleForm
-from models import Fiddle
-import utils
+from django_template_fiddle.forms import FiddleForm
+from django_template_fiddle.models import Fiddle
 
 def make_fiddle(request):
 
@@ -15,7 +15,7 @@ def make_fiddle(request):
         form = FiddleForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            action = request.POST.get('action','show')
+            action = request.POST.get('action','show')  
 
             fiddle_context = form.cleaned_data.get('context')
             fiddle_template = form.cleaned_data.get('template').replace('"','\"')
@@ -58,8 +58,17 @@ def make_fiddle(request):
 
 
 def load_fiddle(request,fiddle_stub):
+    print('req '+ str(request))
+    print('fs '+ str(fiddle_stub))
+
+
     fiddle_stub = utils.base62_decode(fiddle_stub)
-    fiddle = get_object_or_404(Fiddle,pk=fiddle_stub)
+
+    print(fiddle_stub)
+    
+    
+    fiddle = get_object_or_404(Fiddle, pk=fiddle_stub)
+    
     form = FiddleForm(instance=fiddle)
 
     rendered_template = fiddle_render(fiddle.context, fiddle.template)
@@ -70,6 +79,7 @@ def load_fiddle(request,fiddle_stub):
         'fiddle': fiddle,
         'title': fiddle.title,
     }
+
     return render(request, "fiddler/on_the_roof.html", context)
 
 def fiddle_render(fiddle_context, fiddle_template):

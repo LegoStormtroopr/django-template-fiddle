@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.humanize',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -70,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+
+ALLOWED_HOSTS = ['localhost']
 
 WSGI_APPLICATION = 'django_template_fiddle.wsgi.application'
 
