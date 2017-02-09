@@ -60,7 +60,6 @@ def make_fiddle(request):
 def load_fiddle(request,fiddle_stub):
     fiddle_stub = utils.base62_decode(fiddle_stub)
     fiddle = get_object_or_404(Fiddle,pk=fiddle_stub)
-
     form = FiddleForm(instance=fiddle)
 
     rendered_template = fiddle_render(fiddle.context, fiddle.template)
