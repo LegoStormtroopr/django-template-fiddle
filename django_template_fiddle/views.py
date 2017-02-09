@@ -9,13 +9,13 @@ from django_template_fiddle.models import Fiddle
 def make_fiddle(request):
 
     context = {}
-    
+
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = FiddleForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            action = request.POST.get('action','show')  
+            action = request.POST.get('action','show')
 
             fiddle_context = form.cleaned_data.get('context')
             fiddle_template = form.cleaned_data.get('template').replace('"','\"')
@@ -58,17 +58,10 @@ def make_fiddle(request):
 
 
 def load_fiddle(request,fiddle_stub):
-    print('req '+ str(request))
-    print('fs '+ str(fiddle_stub))
-
-
     fiddle_stub = utils.base62_decode(fiddle_stub)
 
-    print(fiddle_stub)
-    
-    
     fiddle = get_object_or_404(Fiddle, pk=fiddle_stub)
-    
+
     form = FiddleForm(instance=fiddle)
 
     rendered_template = fiddle_render(fiddle.context, fiddle.template)
